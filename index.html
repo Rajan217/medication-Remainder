@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Reminder</title>
+    <style>
+        /* Your styles here */
+    </style>
+</head>
+<body>
+    <h1>Medication Reminder</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="med_name" placeholder="Medication Name" required>
+        <input type="text" name="dosage" placeholder="Dosage" required>
+        <input type="time" name="time" required>
+        <button type="submit">Add Medication</button>
+    </form>
+    <h2>Your Medications</h2>
+    <ul>
+        {% for med in medications %}
+            <li>{{ med.name }} - {{ med.dosage }} at {{ med.time }}</li>
+        {% endfor %}
+        {% if not medications %}
+            <li>No medications added yet.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>
